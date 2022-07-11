@@ -1,6 +1,6 @@
 # Compute PN/PS expected ratio
 
-Here is stored a tool in C++ that computes the estimated transitions from one nucleotide to other. To do so you have to:
+Here is stored a tool in C++ that computes the estimated transitions from one nucleotide to another. To do so you have to:
 
  - Estimate the introns.
  - Overlap introns with a vcf/gvcf file.
