@@ -14,7 +14,7 @@ G  116998   35607       0   55342
 T   75316  101451   46050       0
  ```
  
- In the example matrix the number of SNPs that change from an adenosine to a cytosine (A -> C) will be stored at cell (1,2) (in the example the value is 55021).
+ In the example matrix the number of SNPs that change from an adenosine to a cytosine (A -> C) will be stored at cell (1,2) (in the example the value is 46247).
  
  - Extract the CDSs of the sequences that you want to estimate in fasta format.
  - With the transition matrix and the CDS run the program computePNPS_v2_10_03_2020.
