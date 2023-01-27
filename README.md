@@ -94,7 +94,17 @@ Also requires :
 Usage:
 
 ```
-python expected_aa_changes_cons.py -c codonsProps.tsv -ns subsMatrix.tsv -m noDir -i File1 File2 
+RELCONSTSV="Compute_expected_amino_acid_substitution/Example/Dmel_CDSs_conserved_relative.tsv"
+RELN1TSV="Compute_expected_amino_acid_substitution/Example/Dmel_CDSs_N1_relative.tsv"
+TRANSMATRIX="Compute_expected_PNPS/Example/Transition_matrix_introns_full_info.tsv"
+CONSALN="Compute_expected_amino_acid_substitution/Example/Conserved_Drosophila_melanogaster_Drosophila_simulans.tsv"
+N1ALN="Compute_expected_amino_acid_substitution/Example/N1_Drosophila_melanogaster_Drosophila_simulans.tsv"
+
+mkdir -p "Compute_expected_amino_acid_substitution/Example/N1"
+mkdir -p "Compute_expected_amino_acid_substitution/Example/Cons"
+
+python Compute_expected_amino_acid_substitution/expected_aa_changes_cons.py -c $RELCONSTSV -ns $TRANSMATRIX -m noDir -i $CONSALN -o "Compute_expected_amino_acid_substitution/Example/Cons/"
+python Compute_expected_amino_acid_substitution/expected_aa_changes_cons.py -c $RELN1TSV -ns $TRANSMATRIX -m noDir -i $N1ALN -o "Compute_expected_amino_acid_substitution/Example/N1/"
 ```
 
 
