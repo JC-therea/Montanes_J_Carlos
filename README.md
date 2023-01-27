@@ -48,12 +48,14 @@ Additionally there is 2 more arguments requires by the program:
 Usage:
 
 ```
-echo "Nodes=N1,Conserved" > configFile.txt
-echo "Species=Drosophila_melanogaster,Drosophila_simulans" >> configFile.txt
-echo "MSAdir=Standard_annotation/Proteomes/OrthoFinder/Results_MSA_IQtree_bigmem/MultipleSequenceAlignments/" >> configFile.txt
-echo "SummaryTable=Standard_annotation/OutputsR/Summary/INSECTS_gene_summaryshort.tsv" >> configFile.txt
+CFILE="Compute_expected_amino_acid_substitution/Example/configFile.txt"
 
-python tsvExtractorFromMSAfiles.py -c configFile.txt -m 0 -o "Standard_annotation/"
+echo "Nodes=N1,Conserved" > $CFILE
+echo "Species=Drosophila_melanogaster,Drosophila_simulans" >> $CFILE
+echo "MSAdir=Compute_expected_amino_acid_substitution/Example/MultipleSequenceAlignments/" >> $CFILE
+echo "SummaryTable=Compute_expected_amino_acid_substitution/Example/Dmelanogaster_summary.tsv" >> $CFILE
+
+python Compute_expected_amino_acid_substitution/tsvExtractorFromMSAfiles.py -c $CFILE -m 0 -o "Compute_expected_amino_acid_substitution/Example/"
 ```
 
 ## ExtractCodonFrequency.py
