@@ -63,16 +63,23 @@ python Compute_expected_amino_acid_substitution/tsvExtractorFromMSAfiles.py -c $
 Program that outputs the codon frequency of all the transcripts in a given multifasta file. Penultimate column is the absolut frequency of all codons and last column is the frequency of each codon (extracted from the absolute frequencies). Usage:
 
 ```
-python ExtractCodonFrequency.py InputsMultifasta.fa frequencies.tsv
-```
+CONSFA="Compute_expected_amino_acid_substitution/Example/Dmel_CDSs_conserved.fa"
+CONSTSV="Compute_expected_amino_acid_substitution/Example/Dmel_CDSs_conserved.tsv"
+RELCONSTSV="Compute_expected_amino_acid_substitution/Example/Dmel_CDSs_conserved_relative.tsv"
+N1FA="Compute_expected_amino_acid_substitution/Example/Dmel_CDSs_N1.fa"
+N1TSV="Compute_expected_amino_acid_substitution/Example/Dmel_CDSs_N1.tsv"
+RELN1TSV="Compute_expected_amino_acid_substitution/Example/Dmel_CDSs_N1_relative.tsv"
 
-If we want to extract only the last column I recommend the following bash script
+python Compute_expected_amino_acid_substitution/ExtractCodonFrequency.py $CONSFA $CONSTSV
+python Compute_expected_amino_acid_substitution/ExtractCodonFrequency.py $N1FA $N1TSV
 
-```
-LASTC=$(awk '{print NF}' frequencies.tsv | sort -nu | tail -n 1)
-cut -f 1,$LASTC frequencies.tsv | tail -n +2 > relativeFrequencies.tsv
-```
+# This part is to extract the last column of the files
+LASTC=$(awk '{print NF}' $CONSTSV | sort -nu | tail -n 1)
+cut -f 1,$LASTC $CONSTSV | tail -n +2 > $RELCONSTSV
 
+LASTC=$(awk '{print NF}' $N1TSV | sort -nu | tail -n 1)
+cut -f 1,$LASTC $N1TSV | tail -n +2 > $RELN1TSV
+```
 ## expected_aa_changes_cons.py
 
 Program that creates a tsv file with observed and expected frequencies from the provided observed files.
