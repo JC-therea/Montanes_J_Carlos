@@ -1,0 +1,4 @@
+Nodes=N1,Conserved
+Species=Drosophila_melanogaster,Drosophila_simulans
+MSAdir=Compute_expected_amino_acid_substitution/Example/MultipleSequenceAlignments/
+SummaryTable=Compute_expected_amino_acid_substitution/Example/Dmelanogaster_summary.tsv
