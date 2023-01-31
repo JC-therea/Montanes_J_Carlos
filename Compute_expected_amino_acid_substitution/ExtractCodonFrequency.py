@@ -8,10 +8,6 @@ except:
     print("error: ORFSearcher.py <Input nucleotide fasta file> <Output prefix>")
     quit()
 
-
-#file = "/home/jmontanes/Documents/0-Important_files/Insecta/Outputs/DrosophilaMelanogasterCDS/Dmel_CDSs_N1.fa"
-#out = "test.tsv"
-
 codonDict = {"AAA":0, "AAT":0, "AAC":0, "AAG":0,
 "ATA":0, "ATT":0, "ATC":0, "ATG":0,
 "ACA":0, "ACT":0, "ACC":0, "ACG":0,

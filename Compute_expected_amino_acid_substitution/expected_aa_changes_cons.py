@@ -11,13 +11,10 @@ parser.add_argument("-o", "--outFile", default="", type=str, help="Name of the o
 
 args = parser.parse_args()
 file_cod = args.codons
-#file_cod = "/home/jmontanes/Documents/IQtree_Gene_duplication/Insects/DropboxThings/gain_of_acidic_residues/gain_of_acidic_residues/neutral_changes/codons.txt"
+
 file_align_list = args.inputFiles
 mode = args.mode
-#mode = "Dir"
-#file_align1="/home/jmontanes/Documents/IQtree_Gene_duplication/Insects/DropboxThings/gain_of_acidic_residues/gain_of_acidic_residues/AlignmentChangesN1_Drosophila_sechelia.tsv"
-#file_align2="/home/jmontanes/Documents/IQtree_Gene_duplication/Insects/DropboxThings/gain_of_acidic_residues/gain_of_acidic_residues/AlignmentChangesN1_Drosophila_simulans.tsv"
-#file_align_list = [file_align1, file_align2]
+
 aa={
 "A" : 1, "C" : 2, "D" : 3, "E" : 4, "F" : 5, "G" : 6, "H" : 7, "I" : 8, "K" : 9, "L" : 10,
 "M" : 11, "N" : 12, "P" : 13, "Q" : 14, "R" : 15, "S" : 16, "T" : 17, "V" : 18, "W" : 19, "Y" : 20
@@ -45,16 +42,8 @@ genet={"TTT":"F", "TTC":"F", "TTA":"L", "TTG":"L",
        "GAT":"D", "GAC":"D", "GAA":"E", "GAG":"E",
        "GGT":"G", "GGC":"G", "GGA":"G", "GGG":"G"}
 
-#first argument: file with codon frequencies 
-#second argument: file with aa substitution frequencies of pairwise alignments D.mel-D.sech
-#third argument: file with aa substitution frequencies of pairwise alignments D.mel-D.sim
-
-#for set of CONSERVED proteins: python3 expected_aa_changes_cons.py codons_CONS.txt AlignmentChangesConserved_Drosophila_sechelia.tsv AlignmentChangesConserved_Drosophila_simulans.tsv
-#for set of N1 proteins: python3 expected_aa_changes.py codons.txt AlignmentChangesN1_Drosophila_sechelia.tsv AlignmentChangesN1_Drosophila_simulans.tsv
-
 ###### Get the dictionary from tsv file
 transitionMatrix = pd.read_csv(args.nucleotideSubstitution, sep="\t", header=0, index_col=0)
-#transitionMatrix = pd.read_csv("/home/jmontanes/Documents/0-Important_files/Insecta/PNPS/Transition_matrix_introns_full_info.tsv", sep="\t", header=0, index_col=0)
 totalCases = transitionMatrix.sum().sum()
 
 subs={
@@ -448,7 +437,7 @@ if mode == "noDir":
 
 	for fileIn in file_align_list:
 
-		#fileIn = file_align_list[0]
+
 		fileName = fileIn.split("/")[-1].split(".")[0]
 		pandasDfNames.append(fileName)
 		fileInDf = pd.read_csv(fileIn, sep="\t", index_col=0).drop("Perf")
@@ -459,7 +448,7 @@ if mode == "noDir":
 		scaling_factor_obs = fileInDf_prob.Hits.sum() / sum_prob_neu
 		scaling_factor_obs_dict[fileName] = scaling_factor_obs
 
-	#fres=open(args.outFile,"w+")
+
 	outFileDf = probDf.copy()#.pop(0)
 	for fileName in pandasDfNames:
 
@@ -496,8 +485,6 @@ elif mode == "Dir":
 	probDf = pd.DataFrame.from_dict(prob, orient="index")
 	sum_prob_exp = probDf.sum().sum()
 
-	# From triplets of codons we have to create the file N1_changes_with_direction
-	#file_align_list = ["/home/jmontanes/Documents/IQtree_Gene_duplication/Insects/DropboxThings/gain_of_acidic_residues/gain_of_acidic_residues/AlignmentChangesN1_rootSpecies.tsv"]
 	fileInDf = pd.read_csv(file_align_list[0], sep="\t", index_col=0).drop("Perf")
 	prob_N1 = {}
 	for index, row in fileInDf.iterrows():

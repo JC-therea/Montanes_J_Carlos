@@ -39,15 +39,11 @@ except:
     quit()
 
 args = parser.parse_args()
-#config = vars(args)
-#print(config)
-
-# To do so we will extract the information from a file that I created in R
 
 summaryTablePath = SummaryTable
 summaryTable = pd.read_csv(summaryTablePath, sep="\t")
 
-#Nodes = ["N1", "Conserved"]
+
 if args.mode == 0:
     print("Mode comparison between 2 species activated")
     sps1 = Species[0]
@@ -60,7 +56,6 @@ if args.mode == 0:
 
     for node in Nodes:
         OGN1 = summaryTable[summaryTable.AgeNode == node].OrthoGroup
-        #MSAdir = "Standard_annotation/Proteomes/OrthoFinder/Results_MSA_IQtree_bigmem/MultipleSequenceAlignments/"
 
         AlignmentsPais = {}
 
@@ -86,10 +81,8 @@ if args.mode == 0:
                     SpsProts2 += 1
 
             if SpsProts1 != 1 or SpsProts2 != 1:
-                # print(filePath + " does not satisfies the condition")
                 continue
             OGs_used += 1
-            # print(OG)
             for i in range(0, algn_len):
                 lettersAlgn = ""
                 for sp in range(0, len(alignment)):
@@ -144,10 +137,8 @@ if args.mode == 1:
                     SpsProts1 += 1
 
             if SpsProts1 != 2:
-                # print(filePath + " does not satisfies the condition")
                 continue
             OGs_used += 1
-            # print(OG)
             for i in range(0, algn_len):
                 lettersAlgn = ""
                 for sp in range(0, len(alignment)):
@@ -187,7 +178,6 @@ if args.mode == 2:
 
     for node in Nodes:
         OGN1 = summaryTable[summaryTable.AgeNode == node].OrthoGroup
-        #MSAdir = "Standard_annotation/Proteomes/OrthoFinder/Results_MSA_IQtree_bigmem/MultipleSequenceAlignments/"
         AlignmentPerNode = []
         AlignmentsPais = {}
         AlignmentPerOG = []
@@ -216,10 +206,8 @@ if args.mode == 2:
                     SpsProts2 += 1
 
             if RefSpsProts != 1 or SpsProts1 != 1 or SpsProts2 != 1:
-                # print(filePath + " does not satisfies the condition")
                 continue
             OGs_used += 1
-            # print(OG)
             SpsOrder = []
             for i in range(0, algn_len):
                 lettersAlgn = ""
